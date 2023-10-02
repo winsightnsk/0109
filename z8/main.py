@@ -62,7 +62,11 @@ def math_formula(mstr: str) -> str:
 
 
 if __name__ == '__main__':
+    regex = re.compile(r'.+\.\w+')
     namefile = input('Введите има файла: ')
+    if not regex.search(namefile):
+        namefile += '.txt'
+    print(namefile)
     with open(Path(__file__).parents[0].joinpath(namefile), 'r') as f:
         formulas = f.readlines()
     for formula in formulas:
